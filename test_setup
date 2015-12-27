@@ -1,0 +1,45 @@
+Add the following to Gemfile
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
+  gem 'rspec-rails', '3.2.3'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara', '2.4.4'
+end
+
+run bundle install on terminal window
+
+
+on root of app in terminal do the following
+
+rails generate rspec:install
+
+run 
+spring binstub --all
+this creates rspec and spring folders on bin
+
+Then run the following
+guard init rspec
+this creates Guardfile to the app root directory
+
+In guardfile 
+
+change this
+   guard :rspec, cmd: "bundle exec rspec" do
+
+to this
+   guard :rspec, cmd: "bin/rspec" do
+
+
+run guard from root of the app
+
+ctrl + d to exit
