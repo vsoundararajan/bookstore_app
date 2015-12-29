@@ -35,7 +35,8 @@ class AuthorsController < ApplicationController
       flash[:success] = "Author has been updated"
       redirect_to @author
     else
-
+      flash[:danger] = "Author has not been updated"
+      render :edit 
     end
     
   end
