@@ -48,6 +48,7 @@ group :development, :test do
 
   gem 'fabrication'
   gem 'faker'
+  gem 'shoulda-matchers', require: false
 end
 
 group :development do

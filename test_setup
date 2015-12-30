@@ -54,3 +54,15 @@ to this
 run guard from root of the app
 
 ctrl + d to exit
+
+
+To be read
+----------
+
+Shoulda matchers
+Fabricate
+Faker
+
+
+rails g model publisher name:string{50}:uniq
+
