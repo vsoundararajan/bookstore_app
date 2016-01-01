@@ -67,4 +67,5 @@ Faker
 rails g model publisher name:string{50}:uniq
 rails g model publication author:references book:references
 
+rails g model  book title isbn:string{13} description:text published_at:date publisher:references page_count:integer 'price:decimal{16, 2}' 
 
