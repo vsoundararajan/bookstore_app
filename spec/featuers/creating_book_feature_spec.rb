@@ -18,6 +18,7 @@ RSpec.feature "createing Books" do
     fill_in "Description", with: "Leacrn Javascript the quick and easy way"
     fill_in "book_published_at", with: "2012-04-01"
     select "Peachpit Press", from: "Publisher"
+    attach_file "Book cover", "app/assets/images/itext.jpg"
     check author1.full_name
     check author2.full_name
 
