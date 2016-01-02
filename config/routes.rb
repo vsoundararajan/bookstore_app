@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :authors
   resources :publishers
   resources :books
-  resources :users
+  resources :users, only: [:index, :show, :new, :create]
 end

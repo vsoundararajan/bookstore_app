@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "User has been created"
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       #require 'pry'; binding.pry
       flash[:danger] = "User has not been created"
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
  private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
   def set_user
