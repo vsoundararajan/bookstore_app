@@ -1,37 +1,37 @@
 <%= bootstrap_form_for(@user, :html => { class: 'form-horizontal'}) do |f| %>
    <div class="form-group" >
-     <label for="name" class="control-label col-md-3">First Name:</label>
+     <label for="first_name" class="control-label col-md-3">First Name:</label>
      <div class="col-md-9">
       <%= f.text_field :first_name, class: "form-control", hide_label: true %>
      </div>
    </div>
 
    <div class="form-group" >
-     <label for="name" class="control-label col-md-3">Last Name:</label>
+     <label for="last_name" class="control-label col-md-3">Last Name:</label>
      <div class="col-md-9">
       <%= f.text_field :last_name, class: "form-control", hide_label: true %>
      </div>
    </div>
 
    <div class="form-group" >
-     <label for="name" class="control-label col-md-3">Email:</label>
+     <label for="email" class="control-label col-md-3">Email:</label>
      <div class="col-md-9">
       <%= f.text_field :email, class: "form-control", hide_label: true %>
      </div>
    </div>
 
    <div class="form-group" >
-     <label for="name" class="control-label col-md-3">Password:</label>
+     <label for="password" class="control-label col-md-3">Password</label>
      <div class="col-md-9">
-      <%= f.text_field :password, class: "form-control", hide_label: true %>
+      <%= f.password_field :password, class: "form-control", hide_label: true %>
      </div>
    </div>
 
 
    <div class="form-group" >
-     <label for="name" class="control-label col-md-3">Confirm Password:</label>
+     <label for="password_confirmation" class="control-label col-md-3">Confirmation</label>
      <div class="col-md-9">
-      <%= f.text_field :password, class: "form-control", hide_label: true %>
+      <%= f.password_field :password_confirmation, class: "form-control", hide_label: true %>
      </div>
    </div>
 
