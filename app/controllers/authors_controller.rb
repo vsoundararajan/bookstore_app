@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
+  before_action :require_signin
   before_action :set_author, except: [:index, :new, :create]
-
+  
   def index
 
   end
