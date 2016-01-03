@@ -1,4 +1,4 @@
-class PublishersController < ApplicationController
+class Admin::PublishersController < Admin::BaseController
   
   before_action :set_publisher, except: [:index, :new, :create]
 
@@ -19,7 +19,7 @@ class PublishersController < ApplicationController
     if @publisher.save
       #require 'pry'; binding.pry;
       flash[:success] = "Publisher has been created"
-      redirect_to @publisher
+      redirect_to [:admin, @publisher]
     else
       flash[:danger] = "Publishere has not been created"
       render :new
@@ -29,7 +29,7 @@ class PublishersController < ApplicationController
   def destroy
     if @publisher != nil && @publisher.destroy
       flash[:success] = "Publisher has been deleted"
-      redirect_to publishers_path
+      redirect_to admin_publishers_path
     else
       flash[:danger] = "Publisher could not be found"
       redirect_to 

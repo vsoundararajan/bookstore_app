@@ -1,4 +1,4 @@
-class AuthorsController < ApplicationController
+class Admin::AuthorsController < Admin::BaseController
   before_action :require_signin
   before_action :require_admin
   before_action :set_author, except: [:index, :new, :create]
@@ -20,7 +20,7 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
     if @author.save
       flash[:success] = "Author has been created"
-      redirect_to @author
+      redirect_to [:admin, @author]
     else
       #require 'pry'; binding.pry
       flash[:danger] = "Author has not been created"
@@ -37,7 +37,7 @@ class AuthorsController < ApplicationController
     #@author = Author.find(params[:id])
     if @author.update(author_params)
       flash[:success] = "Author has been updated"
-      redirect_to @author
+      redirect_to [:admin, @author]
     else
       flash[:danger] = "Author has not been updated"
       render :edit 
@@ -54,7 +54,7 @@ class AuthorsController < ApplicationController
     @author.destroy
 
     flash[:success] = "Author has been deleted"
-    redirect_to authors_path
+    redirect_to admin_authors_path
   end
 
   private
