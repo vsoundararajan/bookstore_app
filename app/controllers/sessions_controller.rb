@@ -11,7 +11,13 @@ class SessionsController < ApplicationController
     if user = User.authenticate(params[:email], params[:password])
        session[:user_id] = user.id
        flash[:success] = "Sign in successful"
-       redirect_to root_path
+       if session[:intended_destination] 
+        redirect_to session[:intended_destination] 
+        session[:intended_destination]  = nil
+       else
+        redirect_to root_path
+       end
+       #redirect_to root_path
     else
        #require 'pry'; binding.pry
        flash.now[:danger] = "Invalid email/password combination"
@@ -24,4 +30,6 @@ class SessionsController < ApplicationController
     flash[:success] = "You have been signed out"
     redirect_to root_path
   end
+
+
 end
