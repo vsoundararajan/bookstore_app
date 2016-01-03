@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'support/macros'
+require 'support/shared_examples'
 
 RSpec.describe AuthorsController, :type => :controller do
   let(:admin) {Fabricate(:admin)}
@@ -9,22 +10,15 @@ RSpec.describe AuthorsController, :type => :controller do
 
   describe "GET #index" do
     context "guest users" do
-       before { clear_current_user } 
-
-       it "redirects to the signin page for un-authenticated users" do
-         get :index
-         expect(response).to redirect_to signin_path
+       it_behaves_like "requires sign in" do
+         let(:action) { get :index}
        end
-
     end
 
     context "non-admin users" do
-      before {set_current_user}
-
-      it "redirects to the root_path" do
-        get :index
-        expect(response).to redirect_to root_path
-      end
+       it_behaves_like "requires admin" do
+         let(:action) { get :index}
+       end
     end
 
     context "admin users" do
@@ -44,23 +38,15 @@ RSpec.describe AuthorsController, :type => :controller do
       clear_current_user
     end
     context "guest users" do
-      
-
-      it "redirects to the signin page for un-authenticated users" do
-        get :show, id: user.id
-        expect(response).to redirect_to signin_path
-      end
+       it_behaves_like "requires sign in" do
+         let(:action) { get :index}
+       end
     end
 
     context "non-admin users" do
-      before do
-        clear_current_user
-        set_current_user
-      end
-      it "redirects to the root_path for authenticated users" do
-        get :show, id: user.id
-        expect(response).to redirect_to root_path
-      end
+       it_behaves_like "requires admin" do
+         let(:action) { get :index}
+       end
 
     end
 
