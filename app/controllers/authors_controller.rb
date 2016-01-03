@@ -4,7 +4,7 @@ class AuthorsController < ApplicationController
   before_action :set_author, except: [:index, :new, :create]
   
   def index
-
+    @authors = Author.all
   end
 
   def show
@@ -45,6 +45,9 @@ class AuthorsController < ApplicationController
     
   end
 
+  # def full_name
+  #   "#{first_name} #{last_name}"
+  # end
 
   def destroy
     #author = Author.find(params[:id])
