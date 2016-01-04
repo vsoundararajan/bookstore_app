@@ -1,0 +1,13 @@
+<article>
+  <div class="row">
+    <% @books.each do |book| %>
+       <label class="col-md-9">
+          <%= link_to book.title, book %>
+       </label>
+       <div class="col-md-4">
+         <%= link_to book.title, book %>
+       </div>
+       <hr class="col-md-9"/>
+    <% end %>
+  </div>
+</article>
