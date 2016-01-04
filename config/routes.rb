@@ -26,4 +26,6 @@ Rails.application.routes.draw do
         post :search, to: 'catalogs#search'
       end
   end
+
+  resources :carts, only: [:show, :destroy]
 end
