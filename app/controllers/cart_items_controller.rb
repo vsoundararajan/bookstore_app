@@ -13,6 +13,8 @@ class CartItemsController < ApplicationController
     # end
     if @cart_item
       redirect_to @cart_item.cart
+    else
+      redirect_to catalogs_path
     end
   end
 end
