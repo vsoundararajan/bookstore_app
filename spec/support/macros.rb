@@ -23,3 +23,7 @@ def sign_in_as(user)
 
    expect(page).to have_content("Sign in successful")
 end
+
+def set_current_cart(cart = nil)
+  session[:cart_id] = (cart|| Fabricate(:cart)).id
+end
