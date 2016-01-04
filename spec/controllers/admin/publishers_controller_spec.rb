@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Admin::PublishersController, :type => :controller do
+
+
+  let(:admin) {Fabricate(:admin)}
+  let(:user) {Fabricate(:user)}
+
+  before { set_current_admin admin} 
+
   describe "GET #index" do
     it "returns a successful http request status code" do
       get :index
@@ -35,7 +42,7 @@ RSpec.describe Admin::PublishersController, :type => :controller do
 
       it "redirects to the publisher show action" do
         post :create, publisher: Fabricate.attributes_for(:publisher)
-        expect(response).to redirect_to publisher_path(Publisher.last)
+        expect(response).to redirect_to admin_publisher_path(Publisher.last)
       end
 
       it "sets the success flash message" do 
@@ -89,7 +96,7 @@ RSpec.describe Admin::PublishersController, :type => :controller do
         it "redirects to the index action" do
           delete :destroy, id: publisher.id
 
-          expect(response).to redirect_to publishers_path
+          expect(response).to redirect_to admin_publishers_path
         end
     end
  

@@ -1,11 +1,18 @@
 require 'rails_helper'
+require 'support/macros'
 
 RSpec.feature 'Showing user profile'  do
   let!(:user) {Fabricate(:user, first_name: 'John', last_name: 'Doe', email: 'john@example.com')}
+  let(:admin) {Fabricate(:admin)}
+
+  before do
+    sign_in_as admin
+  end
+  
   scenario do
     visit root_path
     click_link 'Users'
-    print page.html
+    #print page.html
     click_link user.email
     within("h3.titles") do
       expect(page).to have_content('John Doe')

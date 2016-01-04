@@ -77,7 +77,7 @@ RSpec.describe Admin::AuthorsController, :type => :controller do
 
       it "redirects to the author show action" do
         post :create, author: Fabricate.attributes_for(:author)
-        expect(response).to redirect_to author_path(Author.last)
+        expect(response).to redirect_to admin_author_path(Author.last)
       end
 
       it "sets the success flash message" do
@@ -131,7 +131,7 @@ RSpec.describe Admin::AuthorsController, :type => :controller do
        it "it redirects to the show action" do
          put :update, author: Fabricate.attributes_for(:author, first_name: "Mike"), id: john.id
 
-         expect(response).to redirect_to(author_path(Author.last))
+         expect(response).to redirect_to(admin_author_path(Author.last))
 
        end
 
@@ -176,7 +176,7 @@ RSpec.describe Admin::AuthorsController, :type => :controller do
       it "redirects to the index action" do
          delete :destroy, id: author.id
 
-         expect(response).to redirect_to authors_path
+         expect(response).to redirect_to admin_authors_path
       end
   end
 

@@ -4,11 +4,14 @@ RSpec.feature "createing Books" do
   let!(:peachpit) { Fabricate(:publisher, name: "Peachpit Press") }
   let!(:author1) { Fabricate(:author) }
   let!(:author2) { Fabricate(:author) }
+  let(:admin) { Fabricate(:admin)}
+  before { sign_in_as admin}
 
   scenario "with valid inputs succeeds" do
     visit root_path
 
     click_link "Books", exact: true
+    #print page.html
     click_link "Add New book"
 
     fill_in "Title", with: "Javascript"

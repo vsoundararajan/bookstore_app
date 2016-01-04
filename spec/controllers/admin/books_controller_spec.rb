@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Admin::BooksController, :type => :controller do
-  
+
+  let(:admin) {Fabricate(:admin)}
+  let(:user) {Fabricate(:user)}
+
+  before { set_current_admin admin} 
+
   describe "GET #index" do
    it "returns a successful http request status code" do
      get :index
@@ -109,7 +114,7 @@ RSpec.describe Admin::BooksController, :type => :controller do
     end
 
     it "redirects to the index page" do
-      expect(response).to redirect_to books_path
+      expect(response).to redirect_to admin_books_path
     end
   end
 end
