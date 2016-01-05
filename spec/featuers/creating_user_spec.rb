@@ -10,6 +10,10 @@ RSpec.feature "Creating users" do
     fill_in "Email", with: "john@example.com"
     fill_in "Password", with: "password"
     fill_in "user_password_confirmation", with: "password"
+    fill_in "address_line1", with: 'Suite 850'
+    fill_in "address_line2", with: '11 Avenue SW'
+    fill_in "City", with: 'Coimbatore'
+    fill_in "Postal Code", with: '12345'
 
     click_button "Create User"
 
@@ -25,7 +29,10 @@ RSpec.feature "Creating users" do
     fill_in "Email", with: "john@example.com"
     fill_in "Password", with: "password"
     fill_in "user_password_confirmation", with: "password"
-
+    fill_in "address_line1", with: 'Suite 850'
+    fill_in "address_line2", with: '11 Avenue SW'
+    fill_in "City", with: 'Coimbatore'
+    fill_in "Postal Code", with: '12345'
     click_button "Create User"
 
     expect(page).to have_content('User has not been created')
