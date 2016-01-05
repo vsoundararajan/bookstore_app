@@ -1,23 +1,31 @@
 <section>
-  <header>
-    <% if @books.empty? %>
-      <h3>No Books Entered</h3>
-    <% else %>
-      <h3 class="titles text-center">All Books</h3>
-    <% end %>
-  </header>
-  <div id="paginate">
-    <%= will_paginate @books, renderer: BootstrapPagination::Rails, class: "pull-left paginate" %>
-  </div>
-  <% @books.each do |book| %>
-    <p class="book-title">
-      <%= link_to book.title, catalog_path(book) %><br>
-      <span class="price-class"><%= number_to_currency(book.price) %></span>
-    </p>
-
-    <p class="book-image"><%= image_tag("https://ssl2004.webhosting.comcast.net/variation.comcastbiz.net/merchantmanager/images/uploads/as-book_thumbnail.gif") if book.book_cover? %></p>
-    <div>
-      <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <header>
+        <% if @books.empty? %>
+          <h3>No Books Entered</h3>
+        <% else %>
+          <h3 class="titles text-center">All Books</h3>
+        <% end %>
+      </header>
     </div>
-  <% end %>
+
+    <div id="paginate" class="col-md-12">
+      <%= will_paginate @books, renderer: BootstrapPagination::Rails, class: "pull-left paginate" %>
+    </div>
+
+    <div class="col-md-12">
+      <% @books.each do |book| %>
+        <p class='book-title'>
+          <%= link_to book.title, catalog_path(book) %><br>
+          <span class='price-class'><%= number_to_currency(book.price) %></span>
+        </p>
+        <p class='book-image'><%= image_tag("https://ssl2004.webhosting.comcast.net/variation.comcastbiz.net/merchantmanager/images/uploads/as-book_thumbnail.gif") if book.book_cover? %></p>
+        <div>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </section>
+
